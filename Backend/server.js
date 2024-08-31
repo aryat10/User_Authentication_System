@@ -1,12 +1,18 @@
 const express = require('express');
 const connectDb = require('./Db/DbConnect'); // Import the connectDb function
 const User  = require('./Db/user')
+const cors = require('cors')
 const app = express();
 const port  = 8000;
 
 
 // MiddleWare for parsing 
 app.use(express.json())
+
+
+// Enable Cors
+app.use(cors())
+
 
 //Registration
 
@@ -26,9 +32,7 @@ app.post('/registor',async(req,res)=>{
 })
 
 
-
-
-// Login 
+// Login Page
 
 
 app.post('/login',async(req,res)=>{
