@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div
       style={{
-        backgroundColor: "#2C2C2C",  
+        backgroundColor: "#1B1A55",  
         color: "white",             
         minHeight: "100vh",         
         padding: "20px"             
