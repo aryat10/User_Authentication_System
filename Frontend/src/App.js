@@ -21,7 +21,7 @@ const App = () => {
           marginTop: "20px",
         }}
       >
-        Welcome to User Authentication System
+        Welcome to User Authentication System 🔒
       </h1>
 
       <BrowserRouter>
