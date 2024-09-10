@@ -41,7 +41,7 @@ All user credentials, including usernames and passwords, are securely stored in 
 - **HTTP Requests**: [Axios](https://axios-http.com/)
 - **Cross-Origin Resource Sharing**: [CORS](https://expressjs.com/en/resources/middleware/cors.html)
 
-## 🛠️ Installation
+## 👨🏻‍💻 Installation
 
 To set up this project locally, follow these steps:
 
