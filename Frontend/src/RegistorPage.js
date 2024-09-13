@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 
 const RegistorPage = () => {
   const [registrationData, setRegistrationData] = useState({
-    username: '',
-    password: ''
+    username: "",
+    password: "",
   });
 
-  const [registrationSuccess, setRegistrationSuccess] = useState(null); // State to track registration status
+  const [registrationSuccess, setRegistrationSuccess] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,80 +21,121 @@ const RegistorPage = () => {
   const handleRegistration = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/registor', registrationData);
-      console.log('Registration successful✅:', response.data);
-      setRegistrationSuccess(true);  // Set success state to true
-      setRegistrationData({ username: '', password: '' });  // Clear form
+      const response = await axios.post(
+        "http://localhost:8000/registor",
+        registrationData
+      );
+      console.log("Registration successful✅:", response.data);
+      setRegistrationSuccess(true);
+      setRegistrationData({ username: "", password: "" });
     } catch (error) {
-      console.error('Registration error❌:', error);
-      setRegistrationSuccess(false);  // Set success state to false
+      console.error("Registration error❌:", error);
+      setRegistrationSuccess(false);
     }
   };
 
   return (
     <div
       style={{
-        backgroundColor: "#535C91",
-        color: "white",
-        padding: "20px",
-        borderRadius: "5px",
+        backgroundColor: "#F2F3F7",
+        color: "#333",
+        padding: "40px",
+        borderRadius: "8px",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        maxWidth: "400px",
+        margin: "0 auto",
       }}
     >
-      <h1>Registration Page📝</h1>
+      <h1
+        style={{
+          fontFamily: "'Playfair Display', serif",
+          fontWeight: "bold",
+          color: "#1B1A55",
+          marginBottom: "20px",
+        }}
+      >
+        Registration Page 📝
+      </h1>
 
       <form onSubmit={handleRegistration}>
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          required
-          value={registrationData.username}
-          onChange={handleChange}
+        <div style={{ marginBottom: "20px" }}>
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            required
+            value={registrationData.username}
+            onChange={handleChange}
+            style={{
+              backgroundColor: "#FFFFFF",
+              color: "#333",
+              padding: "12px",
+              width: "100%",
+              borderRadius: "5px",
+              border: "1px solid #ddd",
+              boxSizing: "border-box",
+            }}
+          />
+        </div>
+        <div style={{ marginBottom: "20px" }}>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+            value={registrationData.password}
+            onChange={handleChange}
+            style={{
+              backgroundColor: "#FFFFFF",
+              color: "#333",
+              padding: "12px",
+              width: "100%",
+              borderRadius: "5px",
+              border: "1px solid #ddd",
+              boxSizing: "border-box",
+            }}
+          />
+        </div>
+        <button
+          type="submit"
           style={{
-            backgroundColor: "white",
-            color: "black",
-            padding: "5px",
-            width: "20%",
-            marginBottom: "10px",
-            borderRadius: "3px",
+            padding: "12px",
+            borderRadius: "5px",
+            backgroundColor: "#1B1A55",
+            color: "#FFFFFF",
+            border: "none",
+            cursor: "pointer",
+            width: "100%",
+            fontSize: "16px",
+            transition: "background-color 0.3s",
           }}
-        />
-        <br />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          required
-          value={registrationData.password}
-          onChange={handleChange}
-          style={{
-            backgroundColor: "white",
-            color: "black",
-            padding: "5px",
-            width: "20%",
-            marginBottom: "10px",
-            borderRadius: "3px",
-          }}
-        />
-        <br />
-        <button type="submit" style={{ padding: "10px", borderRadius: "5px", backgroundColor: "white", color: "#535C91", cursor: "pointer" }}>
+          onMouseOver={(e) =>
+            (e.currentTarget.style.backgroundColor = "#12124d")
+          }
+          onMouseOut={(e) =>
+            (e.currentTarget.style.backgroundColor = "#1B1A55")
+          }
+        >
           Register
         </button>
       </form>
 
-      {/* Display success or error message */}
       {registrationSuccess === true && (
-        <p style={{ color: "lightgreen" }}>Registration complete! 🎉</p>
+        <p style={{ color: "lightgreen", marginTop: "20px" }}>
+          Registration complete! 🎉
+        </p>
       )}
       {registrationSuccess === false && (
-        <p style={{ color: "red" }}>Registration failed. Please try again. ❌</p>
+        <p style={{ color: "red", marginTop: "20px" }}>
+          Registration failed. Please try again. ❌
+        </p>
       )}
 
-      <p>
-        Already a User? Go to{" "}   
+      <p style={{ marginTop: "20px" }}>
+        Already a User? Go to{" "}
         <Link
           to="/login"
-          style={{ color: "white", textDecoration: "underline" }}
+          style={{ color: "#1B1A55", textDecoration: "underline" }}
         >
           Log in
         </Link>
