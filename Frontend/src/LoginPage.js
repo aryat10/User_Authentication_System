@@ -8,7 +8,7 @@ const Login = () => {
     password: "",
   });
 
-  const [loginMessage, setLoginMessage] = useState(null); // State to store login message
+  const [loginMessage, setLoginMessage] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,8 +20,8 @@ const Login = () => {
       );
       const { success, message } = response.data;
       if (success) {
-        setLoginMessage({ type: "success", text: "Login successful!✅" });
-        console.log("Login successful✅", response.data);
+        setLoginMessage({ type: "success", text: "Login successful! ✅" });
+        console.log("Login successful ✅", response.data);
       } else {
         setLoginMessage({ type: "error", text: message });
       }
@@ -31,7 +31,10 @@ const Login = () => {
       });
     } catch (error) {
       console.error("Login error", error);
-      setLoginMessage({ type: "error", text: "Login failed. Please try again.❌" });
+      setLoginMessage({
+        type: "error",
+        text: "Login failed. Please try again. ❌",
+      });
     }
   };
 
@@ -46,77 +49,104 @@ const Login = () => {
   return (
     <div
       style={{
-        backgroundColor: "#535C91",
-        color: "white",
-        padding: "20px",
-        borderRadius: "5px",
-        // marginRight: '50px'
+        backgroundColor: "#F2F3F7",
+        color: "#333",
+        padding: "40px",
+        borderRadius: "8px",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        maxWidth: "400px",
+        margin: "0 auto",
+        textAlign: "center",
       }}
     >
-      <h1 style={{ color: "white" }}>Login Page📋</h1>
+      <h1
+        style={{
+          fontFamily: "'Playfair Display', serif",
+          fontWeight: "bold",
+          color: "#1B1A55",
+          marginBottom: "20px",
+        }}
+      >
+        Login Page 📋
+      </h1>
+
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          required
-          value={loginData.username}
-          onChange={handleChange}
-          style={{
-            backgroundColor: "white",
-            color: "black",
-            padding: "5px",
-            width: "20%",
-            marginBottom: "10px",
-            borderRadius: "3px",
-          }}
-        />
-        <br />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          required
-          value={loginData.password}
-          onChange={handleChange}
-          style={{
-            backgroundColor: "white",
-            color: "black",
-            padding: "5px",
-            width: "20%",
-            marginBottom: "10px",
-            borderRadius: "5px",
-          }}
-        />
-        <br />
+        <div style={{ marginBottom: "20px" }}>
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            required
+            value={loginData.username}
+            onChange={handleChange}
+            style={{
+              backgroundColor: "#FFFFFF",
+              color: "#333",
+              padding: "12px",
+              width: "100%",
+              borderRadius: "5px",
+              border: "1px solid #ddd",
+              boxSizing: "border-box",
+            }}
+          />
+        </div>
+        <div style={{ marginBottom: "20px" }}>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+            value={loginData.password}
+            onChange={handleChange}
+            style={{
+              backgroundColor: "#FFFFFF",
+              color: "#333",
+              padding: "12px",
+              width: "100%",
+              borderRadius: "5px",
+              border: "1px solid #ddd",
+              boxSizing: "border-box",
+            }}
+          />
+        </div>
         <button
           type="submit"
           style={{
-            backgroundColor: "white",
-            color: "black",
-            padding: "10px",
+            padding: "12px",
             borderRadius: "5px",
+            backgroundColor: "#1B1A55",
+            color: "#FFFFFF",
+            border: "none",
             cursor: "pointer",
+            width: "100%",
+            fontSize: "16px",
+            transition: "background-color 0.3s",
           }}
+          onMouseOver={(e) =>
+            (e.currentTarget.style.backgroundColor = "#12124d")
+          }
+          onMouseOut={(e) =>
+            (e.currentTarget.style.backgroundColor = "#1B1A55")
+          }
         >
           Submit
         </button>
-        <p>
+
+        <p style={{ marginTop: "20px" }}>
           Not registered yet? Go to{" "}
           <Link
             to="/registor"
-            style={{ color: "white", textDecoration: "underline" }}
+            style={{ color: "#1B1A55", textDecoration: "underline" }}
           >
             Sign up
           </Link>
         </p>
       </form>
 
-      {/* Display login message */}
       {loginMessage && (
         <p
           style={{
-            color: loginMessage.type !== "success" ? "lightgreen" : "red",
+            color: loginMessage.type === "error" ? "red" : "lightgreen",
             marginTop: "20px",
           }}
         >
