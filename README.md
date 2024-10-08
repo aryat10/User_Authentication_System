@@ -1,5 +1,5 @@
 
-# ⚠️User Authentication System
+# ⚠️👤User Authentication System
 
 Welcome to the **User Authentication System** project! This is a simple yet functional prototype designed to manage user registration and login processes, ensuring that only authorized users can access the system. This project is built with **React JS** for the frontend and **Node.js** with **Express.js** for the backend, using **MongoDB** as the database.
 
